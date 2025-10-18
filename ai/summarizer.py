@@ -1,7 +1,7 @@
 import json
-from analyze import analyze_candidate
-from question_generator import generate_questions
-from relevance_calculator import calculate_relevance
+from .analyze import analyze_candidate
+from .question_generator import generate_questions
+from .relevance_calculator import calculate_relevance
 
 
 def process_candidate(vacancy: dict, resume: dict) -> dict:
@@ -35,27 +35,3 @@ def process_candidate(vacancy: dict, resume: dict) -> dict:
     return result
 
 
-# 🔹 Example test run
-if __name__ == "__main__":
-    vacancy = {
-        "город": "Алматы",
-        "опыт": 3,
-        "образование": "бакалавр",
-        "языки": ["английский", "русский"],
-        "формат": "полный день",
-        "зарплата": 500000,
-        "описание": "Ищем backend-разработчика с опытом работы с Python и FastAPI."
-    }
-
-    resume = {
-        "город": "Шымкент",
-        "опыт": 1.5,
-        "образование": "бакалавр",
-        "языки": ["русский"],
-        "формат": "удалённо",
-        "зарплата": 400000,
-        "описание": "Python разработчик, работал с Flask и немного знаком с FastAPI."
-    }
-
-    report = process_candidate(vacancy, resume)
-    print(json.dumps(report, ensure_ascii=False, indent=2))
